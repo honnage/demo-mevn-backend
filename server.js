@@ -9,14 +9,18 @@ import path from 'path'
 import mongoose from 'mongoose'
 require('dotenv').config()
 
-var url = "mongodb://localhost:27017/dbdemo"
+var url =  process.env.MONGODB || "mongodb://localhost:27017/dbdemo"
+
 mongoose.Promise = global.Promise
 mongoose.connect(url, {
     // useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
-.then(() => console.log('Database connected!!'))
+.then(() => {
+    console.log('url DB', url)
+    console.log('Database connected!!')
+})
 .catch(err => console.error('Error connecting to database:', err))
 
 
