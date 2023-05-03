@@ -11,7 +11,6 @@ var url = process.env.MONGODB || "mongodb://localhost:27017/dbdemo"
 
 mongoose.Promise = global.Promise
 mongoose.connect(url, {
-    // useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
