@@ -1,12 +1,10 @@
-// const express = require('express')
-// const morgan = require('morgan')
-// const cors = require('cors')
-
 import express from 'express'
 import morgan from 'morgan'
 import cors from 'cors'
 import path from 'path'
 import mongoose from 'mongoose'
+import router from './routes'
+
 require('dotenv').config()
 
 var url = process.env.MONGODB || "mongodb://localhost:27017/dbdemo"
@@ -30,10 +28,9 @@ const port = 3066
 app.use(morgan('dev'))
 app.use(cors())
 app.use(express.json())
-app.use(express.urlencoded({
-    extended: true
-}))
+app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, 'public')))
+app.use('/api', router)
 
 app.get('/', (req, res) => res.send('Hello World!'))
 app.get('/hola', (req, res) => res.send('Hello World!'))
