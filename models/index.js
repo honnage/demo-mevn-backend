@@ -1,5 +1,5 @@
-import Categoria from "./categoria"
+import Categories from "./categories"
 
 export default {
-    Categoria
+    Categories
 }

@@ -36,6 +36,8 @@ app.use(express.urlencoded({
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.get('/', (req, res) => res.send('Hello World!'))
+app.get('/hola', (req, res) => res.send('Hello World!'))
+
 app.set('port', process.env.PORT || port)
 
 app.listen(app.get('port'), () => {
