@@ -42,7 +42,7 @@ export default {
     },
     update: async (req, res, next) => {
         try {
-            const data = await models.Categories.findByIdAndUpdate({ _id: req.body._id }, {number: req.body.number, description: req.body.description})
+            const data = await models.Categories.findByIdAndUpdate({ _id: req.body._id }, { name: req.body.name, description: req.body.description })
             res.status(200).json(data)
         } catch (e) {
             res.status(500).send({
@@ -53,7 +53,7 @@ export default {
     },
     remove: async (req, res, next) => {
         try {
-            const data = await models.Categories.findByIdAndDelete({ _id: req.query._id })
+            const data = await models.Categories.findByIdAndDelete({ _id: req.body._id })
             res.status(200).json(data)
         } catch (e) {
             res.status(500).send({

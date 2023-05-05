@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose"
 
 const categoriaShema = new Schema({
-    number: {
+    name: {
         type: String,
         maxlength: 50,
         unique: true,

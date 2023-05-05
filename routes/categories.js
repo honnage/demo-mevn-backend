@@ -7,7 +7,7 @@ router.post('/add', CategoriesController.add)
 router.get('/query', CategoriesController.query)
 router.get('/list', CategoriesController.list)
 router.put('/update', CategoriesController.update)
-router.delete('/remote', CategoriesController.remove)
+router.delete('/remove', CategoriesController.remove)
 router.put('/activate', CategoriesController.activate)
 router.put('/deactivate', CategoriesController.deactivate)
 
