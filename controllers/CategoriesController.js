@@ -15,7 +15,7 @@ export default {
     query: async (req, res, next) => {
         try {
             const data = await models.Categories.findOne({ _id: req.query._id })
-            if (!data){
+            if (!data) {
                 res.status(404).send({
                     message: 'Not Found'
                 })
@@ -31,7 +31,9 @@ export default {
     },
     list: async (req, res, next) => {
         try {
-            const data = await models.Categories.find({})
+            let filter = req.query.filter
+            const data = await models.Categories.find({ $or: [{ 'name': new RegExp(filter, 'i') }, { 'description': new RegExp(filter, 'i') }] }, { createdAt: 0 })
+                .sort({ 'createdAt': -1 })
             res.status(200).json(data)
         } catch (e) {
             res.status(500).send({
@@ -64,7 +66,7 @@ export default {
     },
     activate: async (req, res, next) => {
         try {
-            const data = await models.Categories.findByIdAndUpdate({ _id: req.body._id }, { status: 1})
+            const data = await models.Categories.findByIdAndUpdate({ _id: req.body._id }, { status: 1 })
             res.status(200).json(data)
         } catch (e) {
             res.status(500).send({
@@ -75,7 +77,7 @@ export default {
     },
     deactivate: async (req, res, next) => {
         try {
-            const data = await models.Categories.findByIdAndUpdate({ _id: req.body._id }, { status: 0})
+            const data = await models.Categories.findByIdAndUpdate({ _id: req.body._id }, { status: 0 })
             res.status(200).json(data)
         } catch (e) {
             res.status(500).send({
