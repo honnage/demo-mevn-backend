@@ -1,9 +1,10 @@
 import routerx from 'express-promise-router'
 import articleController from '../controllers/ArticleController'
+import auth from '../middlewares/auth'
 
 const router = routerx()
 
-router.post('/add', articleController.add)
+router.post('/add', auth.verifyWarehouse, articleController.add)
 router.get('/query', articleController.query)
 router.get('/list', articleController.list)
 router.put('/update', articleController.update)
