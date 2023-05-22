@@ -1,13 +1,15 @@
-import routerx from 'express-promise-router'
-import CategoriesRouter from './categories'
-import ArticleRouter from './article'
-import UsersRouter from './users'
-
-const router = routerx()
-
-router.use('/categories', CategoriesRouter)
-router.use('/article', ArticleRouter)
-router.use('/users', UsersRouter)
+import routerx from 'express-promise-router';
+import categoriaRouter from './categoria';
+import articuloRouter from './articulo';
+import usuarioRouter from './usuario';
+import personaRouter from './persona';
 
 
-export default router
+const router=routerx();
+
+router.use('/categoria',categoriaRouter);
+router.use('/articulo',articuloRouter);
+router.use('/usuario',usuarioRouter);
+router.use('/persona',personaRouter);
+
+export default router;

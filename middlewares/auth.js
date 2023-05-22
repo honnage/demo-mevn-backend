@@ -1,15 +1,13 @@
-import { verify } from 'jsonwebtoken'
-import tokenService from '../services/token'
-
+import tokenService from '../services/token';
 export default {
-    verifyUser: async (req,res,next) => {
+    verifyUsuario: async (req,res,next) => {
         if (!req.headers.token){
             return res.status(404).send({
                 message: 'No token'
             });
         }
         const response=await tokenService.decode(req.headers.token);
-        if (response.role =='admin' || response.role == 'Vendedor' || response.role =='Almacenero'){
+        if (response.rol =='Administrador' || response.rol == 'Vendedor' || response.rol=='Almacenero'){
             next();
         } else{
             return res.status(403).send({
@@ -17,14 +15,14 @@ export default {
             });
         }
     },
-    verifyAdmin: async (req,res,next) => {
+    verifyAdministrador: async (req,res,next) => {
         if (!req.headers.token){
             return res.status(404).send({
                 message: 'No token'
             });
         }
         const response=await tokenService.decode(req.headers.token);
-        if (response.role =='admin'){
+        if (response.rol =='Administrador'){
             next();
         } else{
             return res.status(403).send({
@@ -32,14 +30,14 @@ export default {
             });
         }
     },
-    verifyWarehouse: async (req,res,next) => {
+    verifyAlmacenero: async (req,res,next) => {
         if (!req.headers.token){
             return res.status(404).send({
                 message: 'No token'
             });
         }
         const response=await tokenService.decode(req.headers.token);
-        if (response.role =='admin' || response.role =='warehouse'){
+        if (response.rol =='Administrador' || response.rol=='Almacenero'){
             next();
         } else{
             return res.status(403).send({
@@ -54,7 +52,7 @@ export default {
             });
         }
         const response=await tokenService.decode(req.headers.token);
-        if (response.role =='admin' || response.role == 'Vendedor'){
+        if (response.rol =='Administrador' || response.rol == 'Vendedor'){
             next();
         } else{
             return res.status(403).send({

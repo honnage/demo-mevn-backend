@@ -1,9 +1,12 @@
-import Categories from "./categories"
-import Article from "./article"
-import Users from "./users"
+import Categoria from './categoria';
+import Articulo from './';
+import Usuario from './usuario';
+import Persona from './persona';
+
 
 export default {
-    Categories,
-    Article,
-    Users
+    Categoria,
+    Articulo,
+    Usuario,
+    Persona,
 }
